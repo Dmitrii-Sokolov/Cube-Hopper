@@ -41,6 +41,8 @@ public class RowController : MonoBehaviour
 
     void Start()
     {
+        Width = Width * Camera.main.aspect;
+
         if (Mathf.Abs(Side) != 1f)
             Side = Random.value > 0.5f ? -1 : 1;
 

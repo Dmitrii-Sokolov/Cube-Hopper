@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Platform: {fileID: 1189834430550326, guid: ed4961d1003768a4ea9d000d00c7f6a7, type: 2}
-  Width: 15
+  Width: 30
   MinSpeed: 0.5
   MaxSpeed: 2
   MinPlatformLength: 1.5

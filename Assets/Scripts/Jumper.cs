@@ -57,6 +57,7 @@ public class Jumper : MonoBehaviour
 
     private void OnStart(RestartEvent obj)
     {
+        StickyTransform = null;
         CubeTransform.position = StartPosition;
         CubeTransform.rotation = StartRotation;
         JumpInProgress = false;
@@ -111,7 +112,7 @@ public class Jumper : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "MainCamera")
-            Debug.Log("Cube has gone");
+            new FallEvent().Broadcast();
     }
 
     private void OnDestroy()
