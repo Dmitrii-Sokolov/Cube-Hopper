@@ -16,6 +16,7 @@ public class Overlord : MonoBehaviour
     
     public static ActionProperty<int> Score = new ActionProperty<int>();
     public static ActionProperty<int> Highscore = new ActionProperty<int>();
+    public static ActionProperty<bool> Sound = new ActionProperty<bool>();
 
     public static bool Processing { get; private set; } = false;
 
@@ -24,11 +25,16 @@ public class Overlord : MonoBehaviour
         EventDispatcher<NextPlatformEvent>.OnEvent += OnNextPlatform;
         EventDispatcher<FirstJumpEvent>.OnEvent += OnFirstJump;
         EventDispatcher<FallEvent>.OnEvent += OnFall;
+
+        Highscore.Value = MainSettings.Highscore;
+        Sound.Value = MainSettings.Sound;
+
+        Highscore.Changed += (c) => MainSettings.Highscore = c;
+        Sound.Changed += (c) => MainSettings.Sound = c;
     }
 
     private void OnFall(FallEvent obj)
     {
-        Debug.Log(666666);
         Highscore.Value = Mathf.Max(Score.Value, Highscore.Value);
     }
 

@@ -8,7 +8,7 @@ public class Endscreen : MonoBehaviour
     [SerializeField]
     private GameObject NewHighscoreText;
 
-    private void Awake()
+    private void Start()
     {
         EventDispatcher<RestartEvent>.OnEvent += OnStart;
         EventDispatcher<FallEvent>.OnEvent += OnFall;

@@ -109,9 +109,9 @@ public class Jumper : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "MainCamera")
+        if (other.tag == "Floor")
             new FallEvent().Broadcast();
     }
 

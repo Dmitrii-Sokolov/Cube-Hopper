@@ -57,5 +57,5 @@ MonoBehaviour:
   MaxSpeed: 2
   MinPlatformLength: 1.5
   MaxPlatformLength: 4
-  MinSpaceLength: 1.5
-  MaxSpaceLength: 3
+  MinSpaceLength: 2
+  MaxSpaceLength: 4
