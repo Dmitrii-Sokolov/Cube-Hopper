@@ -38,6 +38,11 @@ public class Overlord : MonoBehaviour
         Highscore.Value = Mathf.Max(Score.Value, Highscore.Value);
     }
 
+    public void Pause(bool paused)
+    {
+        Time.timeScale = paused ? 0f : 1f;
+    }
+
     public void Restart()
     {
         Processing = false;

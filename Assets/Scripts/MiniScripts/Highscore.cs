@@ -16,7 +16,7 @@ public class Highscore : MonoBehaviour
 
     private void ScoreChanged(int score)
     {
-        ScoreText.text = $"HIGHSCORE   {score}";
+        ScoreText.text = $"BEST SCORE   {score}";
     }
 
     private void OnDestroy()

@@ -115,6 +115,12 @@ public class Jumper : MonoBehaviour
             new FallEvent().Broadcast();
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "MainCamera")
+            new FallEvent().Broadcast();
+    }
+
     private void OnDestroy()
     {
         EventDispatcher<JumpEvent>.OnEvent -= StartJump;
