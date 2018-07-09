@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Cube 2
+  m_Name: Cube 1
   m_Shader: {fileID: 4800000, guid: 534b44f15d8e80847a1e825dedc7c581, type: 3}
   m_ShaderKeywords: BACKSOLID BOTTOMSOLID FRONTSOLID LEFTSOLID RIGHTSOLID TOPSOLID
     _AOUV_UV0 _GRADIENTSPACE_WORLD_SPACE _GRADSETTINGS_B_USE_GLOBAL _GRADSETTINGS_D_USE_GLOBAL
@@ -135,7 +135,7 @@ Material:
     - _ShowFront: 1
     - _ShowGlobalGradientSettings: 0
     - _ShowLMap: 0
-    - _ShowLeft: 0
+    - _ShowLeft: 1
     - _ShowRight: 1
     - _ShowTexture: 0
     - _ShowTop: 1
@@ -149,18 +149,18 @@ Material:
     - _AOColor: {r: 1, g: 1, b: 1, a: 1}
     - _AmbientColor: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1_B: {r: 0, g: 0.47599998, b: 0.2970785, a: 1}
-    - _Color1_D: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1_F: {r: 1, g: 0.7058824, b: 0.34901962, a: 1}
-    - _Color1_L: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1_R: {r: 0.2569, g: 0.734, b: 0.3443684, a: 1}
-    - _Color1_T: {r: 0.627451, g: 1, b: 0.80751634, a: 1}
-    - _Color2_B: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_D: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_F: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_L: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_R: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_T: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1_B: {r: 0.4323136, g: 0.65313566, b: 0.734, a: 1}
+    - _Color1_D: {r: 0, g: 0, b: 0, a: 1}
+    - _Color1_F: {r: 0.45058778, g: 0.881, b: 0.35643506, a: 1}
+    - _Color1_L: {r: 0.3216706, g: 0.6779075, b: 0.7294118, a: 1}
+    - _Color1_R: {r: 0.40042922, g: 0.538, b: 0.30707762, a: 1}
+    - _Color1_T: {r: 0.63962513, g: 0.78300005, b: 0.033240553, a: 1}
+    - _Color2_B: {r: 0.4323136, g: 0.65313566, b: 0.734, a: 1}
+    - _Color2_D: {r: 0, g: 0, b: 0, a: 1}
+    - _Color2_F: {r: 0.45058778, g: 0.881, b: 0.35643506, a: 1}
+    - _Color2_L: {r: 0.05, g: 0.05, b: 0.05, a: 1}
+    - _Color2_R: {r: 0.40042922, g: 0.538, b: 0.30707762, a: 1}
+    - _Color2_T: {r: 0.63962513, g: 0.78300005, b: 0.033240553, a: 1}
     - _Color_Fog: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GizmoPosition_B: {r: 0, g: 0, b: 10, a: 10}

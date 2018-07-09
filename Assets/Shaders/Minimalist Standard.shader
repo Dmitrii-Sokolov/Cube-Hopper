@@ -1,16 +1,16 @@
 shader "MinimalistFree_V2/Standard" {
 	Properties{
 		//Texture Module
-			[HideInInspector][MaterialToggle] _ShowTexture ("Show Texture settngs", Float ) = 0
+			[MaterialToggle] _ShowTexture ("Show Texture settngs", Float ) = 0
 			_MainTexture ("Main Texture", 2D) = "white" {}
 			_MainTexturePower ("Main Texture Power", Range(-1, 1)) = 0
 		//Custom Shading
-			[HideInInspector][MaterialToggle] _ShowCustomShading ("Show Custom Shading settngs", Float ) = 0
+			[MaterialToggle] _ShowCustomShading ("Show Custom Shading settngs", Float ) = 0
 
-			[HideInInspector][MaterialToggle] _ShowFront ("Front", Float ) = 0
-			[HideInInspector][KeywordEnum(VertexColor, SolidColor, Gradient)] _Shading_F("Shading mode", Float) = 0
-			[HideInInspector][KeywordEnum(Use Global, Custom)] _GradSettings_F("Shading mode", Float) = 0
-			[HideInInspector]_GizmoPosition_F("front gizmo", Vector) = (0, 0, 10, 10)
+			[MaterialToggle] _ShowFront ("Front", Float ) = 0
+			[KeywordEnum(VertexColor, SolidColor, Gradient)] _Shading_F("Shading mode", Float) = 0
+			[KeywordEnum(Use Global, Custom)] _GradSettings_F("Shading mode", Float) = 0
+			_GizmoPosition_F("front gizmo", Vector) = (0, 0, 10, 10)
 
 			_Color1_F("Forward Color 1", Color) = (1, 1, 1, 1)
 			_Color2_F("Forward Color 2", Color) = (1, 1, 1, 1) 
@@ -18,10 +18,10 @@ shader "MinimalistFree_V2/Standard" {
 			_GradientHeight_F("Gradient Height", Float) = 1
 			_Rotation_F("Rotation", Range(0, 360)) = 0
 
-			[HideInInspector][MaterialToggle] _ShowBack ("Front", Float ) = 0
-			[HideInInspector][KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_B("Shading mode", Float) = 0
-			[HideInInspector][KeywordEnum(Use Global, Custom)] _GradSettings_B("Shading mode", Float) = 0
-			[HideInInspector]_GizmoPosition_B("back gizmo", Vector) = (0, 0, 10, 10)
+			[MaterialToggle] _ShowBack ("Front", Float ) = 0
+			[KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_B("Shading mode", Float) = 0
+			[KeywordEnum(Use Global, Custom)] _GradSettings_B("Shading mode", Float) = 0
+			_GizmoPosition_B("back gizmo", Vector) = (0, 0, 10, 10)
 
 			_Color1_B("Backward Color 1", Color) = (1, 1, 1, 1)
 			_Color2_B("Backward Color 2", Color) = (1, 1, 1, 1)
@@ -29,10 +29,10 @@ shader "MinimalistFree_V2/Standard" {
 			_GradientHeight_B("Gradient Height", Float) = 1
 			_Rotation_B("Rotation", Range(0, 360)) = 0
 
-			[HideInInspector][MaterialToggle] _ShowLeft ("Front", Float ) = 0
-			[HideInInspector][KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_L("Shading mode", Float) = 0
-			[HideInInspector][KeywordEnum(Use Global, Custom)] _GradSettings_L("Shading mode", Float) = 0
-			[HideInInspector]_GizmoPosition_L("Left gizmo", Vector) = (0, 0, 10, 10)
+			[MaterialToggle] _ShowLeft ("Front", Float ) = 0
+			[KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_L("Shading mode", Float) = 0
+			[KeywordEnum(Use Global, Custom)] _GradSettings_L("Shading mode", Float) = 0
+			_GizmoPosition_L("Left gizmo", Vector) = (0, 0, 10, 10)
 
 			_Color1_L("Left Color 1", Color) = (1, 1, 1, 1)
 			_Color2_L("Left Color 2", Color) = (1, 1, 1, 1)
@@ -40,10 +40,10 @@ shader "MinimalistFree_V2/Standard" {
 			_GradientHeight_L("Gradient Height", Float) = 1
 			_Rotation_L("Rotation", Range(0, 360)) = 0
 
-			[HideInInspector][MaterialToggle] _ShowRight ("Front", Float ) = 0
-			[HideInInspector][KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_R("Shading mode", Float) = 0
-			[HideInInspector][KeywordEnum(Use Global, Custom)] _GradSettings_R("Shading mode", Float) = 0
-			[HideInInspector]_GizmoPosition_R("Right gizmo", Vector) = (0, 0, 10, 10)
+			[MaterialToggle] _ShowRight ("Front", Float ) = 0
+			[KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_R("Shading mode", Float) = 0
+			[KeywordEnum(Use Global, Custom)] _GradSettings_R("Shading mode", Float) = 0
+			_GizmoPosition_R("Right gizmo", Vector) = (0, 0, 10, 10)
 
 			_Color1_R("Right Color 1", Color) = (1, 1, 1, 1)
 			_Color2_R("Right Color 2", Color) = (1, 1, 1, 1)
@@ -51,10 +51,10 @@ shader "MinimalistFree_V2/Standard" {
 			_GradientHeight_R("Gradient Height", Float) = 1
 			_Rotation_R("Rotation", Range(0, 360)) = 0
 
-			[HideInInspector][MaterialToggle] _ShowTop ("Top", Float ) = 0
-			[HideInInspector][KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_T("Shading mode", Float) = 0
-			[HideInInspector][KeywordEnum(Use Global, Custom)] _GradSettings_T("Gradient mode", Float) = 0
-			[HideInInspector]_GizmoPosition_T("Top gizmo", Vector) = (0, 0, 10, 10)
+			[MaterialToggle] _ShowTop ("Top", Float ) = 0
+			[KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_T("Shading mode", Float) = 0
+			[KeywordEnum(Use Global, Custom)] _GradSettings_T("Gradient mode", Float) = 0
+			_GizmoPosition_T("Top gizmo", Vector) = (0, 0, 10, 10)
 
 			_Color1_T ("Top Color 1", Color) = (1, 1, 1, 1)
 			_Color2_T ("Top Color 2", Color) = (1, 1, 1, 1)
@@ -62,10 +62,10 @@ shader "MinimalistFree_V2/Standard" {
 			_GradientHeight_T("Gradient Height", Float) = 1
 			_Rotation_T("Rotation", Range(0, 360)) = 0
 
-			[HideInInspector][MaterialToggle] _ShowBottom ("Botttom", Float ) = 0
-			[HideInInspector][KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_D("Shading mode", Float) = 0
-			[HideInInspector][KeywordEnum(Use Global, Custom)] _GradSettings_D("Gradient mode", Float) = 0
-			[HideInInspector]_GizmoPosition_D("Down gizmo", Vector) = (0, 0, 10, 10)
+			[MaterialToggle] _ShowBottom ("Botttom", Float ) = 0
+			[KeywordEnum(Vertex Color, Solid Color, Gradient)] _Shading_D("Shading mode", Float) = 0
+			[KeywordEnum(Use Global, Custom)] _GradSettings_D("Gradient mode", Float) = 0
+			_GizmoPosition_D("Down gizmo", Vector) = (0, 0, 10, 10)
 
 			_Color1_D ("Bottom Color 1", Color) = (1, 1, 1, 1)
 			_Color2_D ("Bottom Color 2", Color) = (1, 1, 1, 1)
@@ -73,44 +73,44 @@ shader "MinimalistFree_V2/Standard" {
 			_GradientHeight_D("Gradient Height", Float) = 1
 			_Rotation_D("Rotation", Range(0, 360)) = 0
 		//Ambient Occlution
-			[HideInInspector][MaterialToggle] _ShowAO ("AO", Float ) = 0
-			[HideInInspector][MaterialToggle] _AOEnable ("Enable", Float ) = 0
+			[MaterialToggle] _ShowAO ("AO", Float ) = 0
+			[MaterialToggle] _AOEnable ("Enable", Float ) = 0
 			_AOTexture ("AO Texture", 2D) = "white" {}
 			_AOColor ("AO Color", Color) = (1, 1, 1, 1)
 			_AOPower ("AO Texture Power", Range(0, 3)) = 0
-			[HideInInspector][KeywordEnum(uv0, uv1)] _AOuv("UV", Float) = 0
+			[KeywordEnum(uv0, uv1)] _AOuv("UV", Float) = 0
 		//Lightmap
-			[HideInInspector][MaterialToggle] _ShowLMap ("Lightmap", Float ) = 0
-			[HideInInspector][MaterialToggle] _LmapEnable ("Enable", Float ) = 0
-			[HideInInspector][KeywordEnum(Add, Multiply, AO)] _LmapBlendingMode("Blend Mode", Float) = 0
+			[MaterialToggle] _ShowLMap ("Lightmap", Float ) = 0
+			[MaterialToggle] _LmapEnable ("Enable", Float ) = 0
+			[KeywordEnum(Add, Multiply, AO)] _LmapBlendingMode("Blend Mode", Float) = 0
 			_LMColor ("LightMap Color", Color) = (1, 1, 1, 1)
 			_LMPower ("LightMap Power", Range(0, 5.0)) = 0
 		//Fog
-			[HideInInspector][MaterialToggle] _ShowFog ("ShowFog", Float ) = 0
+			[MaterialToggle] _ShowFog ("ShowFog", Float ) = 0
 			[MaterialToggle] _UnityFogEnable ("Fog", Float ) = 0
 			[MaterialToggle] _HFogEnable ("Fog", Float ) = 0
 			_Color_Fog ("Fog Color",     Color) = (0.5, 0.5, 0.5, 1)
 			_FogYStartPos ("Gradient start Y", Float) = 0
 			_FogHeight("Gradient Height", Float) = 10
 		//Color Correction
-			[HideInInspector][MaterialToggle] _ShowColorCorrection ("Color Correction", Float ) = 0
-			[HideInInspector][MaterialToggle] _ColorCorrectionEnable ("Enable", Float ) = 0
+			[MaterialToggle] _ShowColorCorrection ("Color Correction", Float ) = 0
+			[MaterialToggle] _ColorCorrectionEnable ("Enable", Float ) = 0
 			_TintColor ("Tint Color", Color) = (1, 1, 1, 1)
 			_Saturation ("Saturation", Range(0, 1)) = 1
 			_Brightness ("Brightness", Range(-1, 1)) = 0
 		//OtherSettings
 			[MaterialToggle] _OtherSettings ("OtherSettings", Float ) = 0
 
-			[HideInInspector][MaterialToggle] _ShowGlobalGradientSettings ("Show Global Gradient Settings", Float ) = 0
+			[MaterialToggle] _ShowGlobalGradientSettings ("Show Global Gradient Settings", Float ) = 0
 			_GradientYStartPos_G ("Gradient start Y", Vector) = (0, 0, 0, 0)
 			_GradientHeight_G("Gradient Height", Float) = 1
 			_Rotation_G("Rotation", Float) = 0
 
-			[HideInInspector][MaterialToggle] _ShowAmbientSettings ("Show Ambient Settings", Float ) = 0
+			[MaterialToggle] _ShowAmbientSettings ("Show Ambient Settings", Float ) = 0
 			_AmbientColor("Ambient Color",Color) = (0, 0, 0, 0)
 			_AmbientPower("Ambient Power", Range(0, 2.0)) = 0
 
-			[HideInInspector][MaterialToggle] _RimEnable ("Use Rim", Float ) = 0
+			[MaterialToggle] _RimEnable ("Use Rim", Float ) = 0
 			_RimColor ("Rim Color", Color) = (1, 1, 1, 1)
 			_RimPower ("Power", Range(0, 4)) = 1
             
@@ -145,17 +145,24 @@ shader "MinimalistFree_V2/Standard" {
 
 			#include "UnityCG.cginc"
 
-			//Uniforms
+				//Uniforms
 				uniform sampler2D _MainTexture; uniform fixed4 _MainTexture_ST;
 
-				uniform half3 _Color1_F;
-				uniform half3 _Color1_B;
-				uniform half3 _Color1_L;
-				uniform half3 _Color1_R;
-				uniform half3 _Color1_T;
-				uniform half3 _Color1_D;
+				uniform fixed3 _Color1_F;
+				uniform fixed3 _Color1_B;
+				uniform fixed3 _Color1_L;
+				uniform fixed3 _Color1_R;
+				uniform fixed3 _Color1_T;
+				uniform fixed3 _Color1_D;
 
-			//Direction vector constants
+				uniform fixed3 _Color2_F;
+				uniform fixed3 _Color2_B;
+				uniform fixed3 _Color2_L;
+				uniform fixed3 _Color2_R;
+				uniform fixed3 _Color2_T;
+				uniform fixed3 _Color2_D;
+
+				//Direction vector constants
 				static const half3 FrontDir = half3(0, 0, 1);
 				static const half3 BackDir = half3(0, 0, -1);
 				static const half3 LeftDir = half3(1, 0, 0);
@@ -198,7 +205,7 @@ shader "MinimalistFree_V2/Standard" {
 				#endif
 
 				//Calculating custom shadings
-					half3 colorFront, colorBack, colorLeft, colorRight, colorTop, colorDown;
+					fixed3 colorFront, colorBack, colorLeft, colorRight, colorTop, colorDown;
 					fixed dirFront = max(dot(normal, FrontDir), 0.0);
 					fixed dirBack = max(dot(normal, BackDir), 0.0);
 					fixed dirLeft = max(dot(normal, LeftDir), 0.0);
@@ -209,22 +216,22 @@ shader "MinimalistFree_V2/Standard" {
 					colorFront = colorBack = colorLeft = colorRight = colorTop = colorDown = v.vColor;
 
 					#if FRONTSOLID 
-						colorFront = _Color1_F; 
+						colorFront = lerp(_Color2_F, _Color1_F, v.uv0.y);
 					#endif
 					#if BACKSOLID
-						colorBack = _Color1_B;
+						colorBack = lerp(_Color1_B, _Color2_B, v.uv0.y);
 					#endif
 					#if LEFTSOLID
-						colorLeft = _Color1_L;
+						colorLeft = lerp(_Color2_L, _Color1_L, v.uv0.y);
 					#endif
 					#if RIGHTSOLID
-						colorRight = _Color1_R;
+						colorRight = lerp(_Color2_R, _Color1_R, v.uv0.y);
 					#endif
 					#if TOPSOLID
-						colorTop = _Color1_T;
+						colorTop = lerp(_Color2_T, _Color1_T, v.uv0.y);
 					#endif
 					#if BOTTOMSOLID
-						colorDown = _Color1_D;
+						colorDown = lerp(_Color2_D, _Color1_D, v.uv0.y);
 					#endif
 
 				o.customLighting = lerp(colorFront, whiteColor, 1-dirFront) * lerp(colorBack, whiteColor, 1-dirBack) * lerp(colorLeft, whiteColor, 1-dirLeft) * lerp(colorRight, whiteColor, 1-dirRight) * lerp(colorTop, whiteColor, 1-dirTop) * lerp(colorDown, whiteColor, 1-dirBottom);
