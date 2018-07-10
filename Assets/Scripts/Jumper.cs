@@ -26,6 +26,12 @@ public class Jumper : MonoBehaviour
     [SerializeField]
     private AnimationCurve ShiftCurve;
 
+    [SerializeField]
+    private float[] ScoreThresholds;
+
+    [SerializeField]
+    private float ScoreMultiplayer = 100f;
+
     private Vector3 JumpDirection;
     private float JumpRotation;
     private Transform CubeTransform;
@@ -129,7 +135,20 @@ public class Jumper : MonoBehaviour
             if (hit.collider is BoxCollider)
                 Length = 2f * ((BoxCollider)hit.collider).size.x;
 
-            new NextPlatformEvent() { Accuracy = 1f - Mathf.Abs(StickyShift.x / Length)}.Broadcast();
+            var accuracy = 1f - Mathf.Abs(StickyShift.x / Length);
+            var grade = 0;
+
+            for (int i = 0; i < ScoreThresholds.Length; i++)
+                if (ScoreThresholds[i] > accuracy)
+                    grade = i + 1;
+
+            new NextPlatformEvent()
+            {
+                Accuracy = accuracy,
+                Grade = grade,
+                Score = Mathf.CeilToInt(accuracy * ScoreMultiplayer),
+                Position = CubeTransform.position
+            }.Broadcast();
         }
     }
 

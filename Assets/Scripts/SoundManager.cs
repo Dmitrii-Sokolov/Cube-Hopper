@@ -8,7 +8,6 @@ public class HitAudioSettings
 {
     public AudioClip Clip;
     public float Volume;
-    public float ScoreThreshold;
 }
 
 public class SoundManager : MonoBehaviour {
@@ -29,7 +28,7 @@ public class SoundManager : MonoBehaviour {
     private float MaxJumpPitch = 1.1f;
 
     [SerializeField]
-    private List<HitAudioSettings> HitSettings;
+    private HitAudioSettings[] HitSettings;
 
     void Awake ()
     {
@@ -54,14 +53,8 @@ public class SoundManager : MonoBehaviour {
 
     private void OnNextPlatform(NextPlatformEvent obj)
     {
-        foreach (var item in HitSettings)
-            if (obj.Accuracy > item.ScoreThreshold)
-            {
-                SFX.pitch = 1f;
-                SFX.PlayOneShot(item.Clip, item.Volume);
-                Debug.Log(obj.Accuracy + "   " + item.ScoreThreshold);
-                return;
-            }
+        SFX.pitch = 1f;
+        SFX.PlayOneShot(HitSettings[obj.Grade].Clip, HitSettings[obj.Grade].Volume);
     }
 
     private void OnDestroy()

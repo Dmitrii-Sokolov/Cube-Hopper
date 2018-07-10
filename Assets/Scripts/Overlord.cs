@@ -7,13 +7,13 @@ public struct FallEvent { }
 public struct RestartEvent { }
 public struct FirstJumpEvent { }
 public struct JumpEvent { }
-public struct NextPlatformEvent { public float Accuracy; }
+public struct NextPlatformEvent { public float Accuracy; public int Grade; public int Score; public Vector3 Position; }
 
 public class Overlord : MonoBehaviour
 {
     [SerializeField]
     private Settings MainSettings;
-    
+
     public static ActionProperty<int> Score = new ActionProperty<int>();
     public static ActionProperty<int> Highscore = new ActionProperty<int>();
     public static ActionProperty<bool> Sound = new ActionProperty<bool>();
@@ -67,8 +67,7 @@ public class Overlord : MonoBehaviour
 
     private void OnNextPlatform(NextPlatformEvent ev)
     {
-        Score.Value += Mathf.CeilToInt(ev.Accuracy * 100f);
-        //Debug.Log("Accuracy " + ev.Accuracy + "  Score : " + Score.Value);
+        Score.Value += ev.Score;
     }
 
     private void OnDestroy()
