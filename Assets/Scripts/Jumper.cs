@@ -30,14 +30,14 @@ public class Jumper : MonoBehaviour
     private float JumpRotation;
     private Transform CubeTransform;
 
-    private bool JumpInProgress = false;
-    private float JumpState = 0f;
+    private bool JumpInProgress;
+    private float JumpState;
     private Vector3 JumpPoint;
 
     private Transform StickyTransform;
     private Vector3 StickyShift;
 
-    private bool StablePosition = true;
+    private bool StablePosition;
 
     private Vector3 StartPosition;
     private Quaternion StartRotation;
@@ -46,20 +46,31 @@ public class Jumper : MonoBehaviour
     {
         CubeTransform = transform;
         JumpDirection = CubeTransform.forward;
-        JumpRotation = CubeTransform.rotation.eulerAngles.y;
+        JumpRotation = CubeTransform.localRotation.eulerAngles.y;
 
-        StartPosition = CubeTransform.position;
-        StartRotation = CubeTransform.rotation;
+        StartPosition = CubeTransform.localPosition;
+        StartRotation = CubeTransform.localRotation;
 
         EventDispatcher<JumpEvent>.OnEvent += StartJump;
         EventDispatcher<RestartEvent>.OnEvent += OnStart;
+
+        OnStart(new RestartEvent());
     }
 
     private void OnStart(RestartEvent obj)
     {
         StickyTransform = null;
-        CubeTransform.position = StartPosition;
-        CubeTransform.rotation = StartRotation;
+
+        CubeTransform.localPosition = StartPosition;
+        CubeTransform.localRotation = StartRotation;
+
+        RaycastHit hit;
+        if (Physics.Raycast(CubeTransform.position, Vector3.down, out hit) && hit.transform.tag == "Platform")
+        {
+            StickyTransform = hit.transform;
+            StickyShift = CubeTransform.localPosition - StickyTransform.position;
+        }
+
         JumpInProgress = false;
         JumpState = 0f;
         StablePosition = true;
@@ -69,9 +80,13 @@ public class Jumper : MonoBehaviour
     {
         if (!JumpInProgress && StablePosition)
         {
-            JumpPoint = CubeTransform.position;
+            JumpPoint = CubeTransform.localPosition;
             JumpInProgress = true;
             JumpState = 0f;
+
+            if (StickyTransform != null)
+                StickyTransform.GetComponent<Platform>().Crouch();
+
             StickyTransform = null;
         }
     }
@@ -81,31 +96,37 @@ public class Jumper : MonoBehaviour
         if (JumpInProgress)
         {
             JumpState = Mathf.Clamp01(JumpState + Time.deltaTime / JumpTime);
-            JumpInProgress = JumpState < 1f;
-            CubeTransform.SetPositionAndRotation(JumpPoint + new Vector3(0, JumpHeight * HeightCurve.Evaluate(JumpState), 0) + JumpShift * JumpDirection * ShiftCurve.Evaluate(JumpState), Quaternion.Euler(JumpAngle * RotationCurve.Evaluate(JumpState), JumpRotation, 0f));
+            CubeTransform.SetPositionAndRotation(new Vector3(JumpPoint.x, Mathf.Lerp(JumpPoint.y, 0f, JumpState) + JumpHeight * HeightCurve.Evaluate(JumpState), JumpPoint.z) + JumpShift * JumpDirection * ShiftCurve.Evaluate(JumpState), Quaternion.Euler(JumpAngle * RotationCurve.Evaluate(JumpState), JumpRotation, 0f));
+
+            if (JumpState >= 1f)
+            {
+                JumpInProgress = false;
+                CheckGround();
+            }
         }
         else
         {
             if (StickyTransform != null)
-                CubeTransform.position = StickyTransform.position + StickyShift;
+                CubeTransform.localPosition = StickyTransform.position + StickyShift;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void CheckGround()
     {
-        StablePosition = StablePosition && Physics.Raycast(CubeTransform.position, Vector3.down);
+        RaycastHit hit;
+        StablePosition = Physics.Raycast(CubeTransform.position, Vector3.down, out hit) && hit.transform.tag == "Platform";
 
         if (StablePosition)
         {
-            StickyTransform = collision.transform;
-            StickyShift = CubeTransform.position - StickyTransform.position;
+            StickyTransform = hit.transform;
+            StickyShift = CubeTransform.localPosition - StickyTransform.position;
+            StickyTransform.GetComponent<Platform>().Crouch();
 
             var Length = 2f;
-            if (collision.collider is BoxCollider)
-                Length = 2f * ((BoxCollider)collision.collider).size.x;
+            if (hit.collider is BoxCollider)
+                Length = 2f * ((BoxCollider)hit.collider).size.x;
 
-            if (Overlord.Processing)
-                new NextPlatformEvent() { Accuracy = 1f - Mathf.Abs(StickyShift.x / Length)}.Broadcast();
+            new NextPlatformEvent() { Accuracy = 1f - Mathf.Abs(StickyShift.x / Length)}.Broadcast();
         }
     }
 

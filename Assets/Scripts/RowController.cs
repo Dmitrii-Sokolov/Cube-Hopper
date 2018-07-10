@@ -62,6 +62,7 @@ public class RowController : MonoBehaviour
         block.localPosition = new Vector3(- Side * (CurrentPoint + size * 0.5f), 0f, 0f);
         block.localScale = new Vector3(size, block.localScale.y, block.localScale.z);
         CurrentPoint += size + GetRandomBetween(MinSpaceLength, MaxSpaceLength);
+        block.GetComponent<Platform>().Init(0f);
         Platforms.Add(block);
     }
 

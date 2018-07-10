@@ -22,18 +22,18 @@ public class CameraMotor : MonoBehaviour
     private void Start()
     {
         MotorTransorm = transform;
-        StartPosition = MotorTransorm.position;
+        StartPosition = MotorTransorm.localPosition;
     }
 
     private void OnStart(RestartEvent obj)
     {
-        MotorTransorm.position = StartPosition;
+        MotorTransorm.localPosition = StartPosition;
     }
 
     void FixedUpdate ()
     {
         if (Overlord.Processing)
-            MotorTransorm.position += Direction * speed * Time.deltaTime;
+            MotorTransorm.localPosition += Direction * speed * Time.deltaTime;
     }
 
     private void OnDestroy()

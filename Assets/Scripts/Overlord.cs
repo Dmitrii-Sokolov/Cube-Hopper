@@ -36,6 +36,7 @@ public class Overlord : MonoBehaviour
     private void OnFall(FallEvent obj)
     {
         Highscore.Value = Mathf.Max(Score.Value, Highscore.Value);
+        Processing = false;
     }
 
     public void Pause(bool paused)
