@@ -40,6 +40,7 @@ public class Platform : MonoBehaviour {
     {
         if (!CrouchInProgress)
         {
+            CrouchState = 0f;
             CrouchInProgress = true;
             YStartPosition = PlatformTransform.localPosition.y;
         }

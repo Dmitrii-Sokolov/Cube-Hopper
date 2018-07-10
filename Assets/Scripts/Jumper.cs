@@ -51,7 +51,7 @@ public class Jumper : MonoBehaviour
         StartPosition = CubeTransform.localPosition;
         StartRotation = CubeTransform.localRotation;
 
-        EventDispatcher<JumpEvent>.OnEvent += StartJump;
+        Overlord.JumpPressed += StartJump;
         EventDispatcher<RestartEvent>.OnEvent += OnStart;
 
         OnStart(new RestartEvent());
@@ -70,16 +70,19 @@ public class Jumper : MonoBehaviour
             StickyTransform = hit.transform;
             StickyShift = CubeTransform.localPosition - StickyTransform.position;
         }
+        //Debug.Log(StickyTransform);
 
         JumpInProgress = false;
         JumpState = 0f;
         StablePosition = true;
     }
 
-    public void StartJump(JumpEvent ev)
+    public void StartJump()
     {
         if (!JumpInProgress && StablePosition)
         {
+            new JumpEvent().Broadcast();
+
             JumpPoint = CubeTransform.localPosition;
             JumpInProgress = true;
             JumpState = 0f;
@@ -144,7 +147,7 @@ public class Jumper : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventDispatcher<JumpEvent>.OnEvent -= StartJump;
+        Overlord.JumpPressed -= StartJump;
         EventDispatcher<RestartEvent>.OnEvent -= OnStart;
     }
 }

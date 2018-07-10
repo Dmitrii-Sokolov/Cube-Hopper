@@ -18,6 +18,8 @@ public class Overlord : MonoBehaviour
     public static ActionProperty<int> Highscore = new ActionProperty<int>();
     public static ActionProperty<bool> Sound = new ActionProperty<bool>();
 
+    public static Action JumpPressed;
+
     public static bool Processing { get; private set; } = false;
 
     private void Awake()
@@ -53,7 +55,7 @@ public class Overlord : MonoBehaviour
 
     public void Jump()
     {
-        new JumpEvent().Broadcast();
+        JumpPressed();
         if (!Processing)
             new FirstJumpEvent().Broadcast();
     }
