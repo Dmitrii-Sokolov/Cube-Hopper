@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DSapsan
-  productName: Cubehopper
+  productName: Cube Hopper
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -642,7 +642,7 @@ PlayerSettings:
     2293910: Assets/Textures/Logos/Wide310x150Logo.scale-150.png
     2293960: Assets/Textures/Logos/Wide310x150Logo.scale-200.png
     2294160: Assets/Textures/Logos/Wide310x150Logo.scale-400.png
-  metroTileShortName: Cubehopper
+  metroTileShortName: Cube Hopper
   metroCommandLineArgsFile: 
   metroTileShowName: 0
   metroMediumTileShowName: 1
