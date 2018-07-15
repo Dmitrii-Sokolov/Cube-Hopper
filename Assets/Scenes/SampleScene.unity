@@ -1830,7 +1830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e801b6fdc497e0f43b894f93b754a312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainSettings: {fileID: 11400000, guid: f3d55be0301666b43ac10853330858c8, type: 2}
+  BestScoreKey: Highscore
+  SoundKey: Sound
 --- !u!4 &820641372
 Transform:
   m_ObjectHideFlags: 0
