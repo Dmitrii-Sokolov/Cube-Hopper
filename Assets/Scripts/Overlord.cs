@@ -12,7 +12,10 @@ public struct NextPlatformEvent { public float Accuracy; public int Grade; publi
 public class Overlord : MonoBehaviour
 {
     [SerializeField]
-    private Settings MainSettings;
+    private string BestScoreKey = "Highscore";
+
+    [SerializeField]
+    private string SoundKey = "Sound";
 
     public static ActionProperty<int> Score = new ActionProperty<int>();
     public static ActionProperty<int> Highscore = new ActionProperty<int>();
@@ -28,11 +31,11 @@ public class Overlord : MonoBehaviour
         EventDispatcher<FirstJumpEvent>.OnEvent += OnFirstJump;
         EventDispatcher<FallEvent>.OnEvent += OnFall;
 
-        Highscore.Value = MainSettings.Highscore;
-        Sound.Value = MainSettings.Sound;
+        Highscore.Value = PlayerPrefs.GetInt(BestScoreKey, 0);
+        Sound.Value = PlayerPrefs.GetInt(SoundKey, 1) == 1;
 
-        Highscore.Changed += (c) => MainSettings.Highscore = c;
-        Sound.Changed += (c) => MainSettings.Sound = c;
+        Highscore.Changed += (c) => PlayerPrefs.SetInt(BestScoreKey, c);
+        Sound.Changed += (c) => PlayerPrefs.SetInt(SoundKey, c ? 1 : 0);
     }
 
     private void OnFall(FallEvent obj)
