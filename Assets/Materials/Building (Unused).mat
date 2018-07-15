@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Stone
+  m_Name: Building (Unused)
   m_Shader: {fileID: 4800000, guid: 534b44f15d8e80847a1e825dedc7c581, type: 3}
   m_ShaderKeywords: BACKSOLID BOTTOMSOLID FRONTSOLID LEFTSOLID RIGHTSOLID TOPSOLID
     _AOUV_UV0 _GRADIENTSPACE_WORLD_SPACE _GRADSETTINGS_B_USE_GLOBAL _GRADSETTINGS_D_USE_GLOBAL
@@ -149,12 +149,12 @@ Material:
     - _AOColor: {r: 1, g: 1, b: 1, a: 1}
     - _AmbientColor: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1_B: {r: 1, g: 0.25882354, b: 0.25882354, a: 1}
-    - _Color1_D: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1_F: {r: 1, g: 0.7058824, b: 0.34901962, a: 1}
-    - _Color1_L: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1_R: {r: 0.9725491, g: 0.45882356, b: 0.3803922, a: 1}
-    - _Color1_T: {r: 1, g: 0.9215687, b: 0.627451, a: 1}
+    - _Color1_B: {r: 0.054901965, g: 0.18431373, b: 0.2627451, a: 1}
+    - _Color1_D: {r: 0, g: 0, b: 0, a: 1}
+    - _Color1_F: {r: 0.20784315, g: 0.3647059, b: 0.5137255, a: 1}
+    - _Color1_L: {r: 0.3216706, g: 0.6779075, b: 0.7294118, a: 1}
+    - _Color1_R: {r: 0.054901965, g: 0.18431373, b: 0.2627451, a: 1}
+    - _Color1_T: {r: 0.35686275, g: 0.68235296, b: 0.7294118, a: 1}
     - _Color2_B: {r: 1, g: 1, b: 1, a: 1}
     - _Color2_D: {r: 1, g: 1, b: 1, a: 1}
     - _Color2_F: {r: 1, g: 1, b: 1, a: 1}

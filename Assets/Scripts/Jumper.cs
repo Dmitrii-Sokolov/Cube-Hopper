@@ -116,7 +116,10 @@ public class Jumper : MonoBehaviour
         else
         {
             if (StickyTransform != null)
+            {
                 CubeTransform.localPosition = StickyTransform.position + StickyShift;
+                CubeTransform.localRotation = StartRotation;
+            }
         }
     }
 

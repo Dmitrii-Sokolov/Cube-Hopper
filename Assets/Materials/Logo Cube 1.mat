@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Building
-  m_Shader: {fileID: 4800000, guid: 534b44f15d8e80847a1e825dedc7c581, type: 3}
+  m_Name: Logo Cube 1
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: BACKSOLID BOTTOMSOLID FRONTSOLID LEFTSOLID RIGHTSOLID TOPSOLID
     _AOUV_UV0 _GRADIENTSPACE_WORLD_SPACE _GRADSETTINGS_B_USE_GLOBAL _GRADSETTINGS_D_USE_GLOBAL
     _GRADSETTINGS_F_USE_GLOBAL _GRADSETTINGS_L_USE_GLOBAL _GRADSETTINGS_R_USE_GLOBAL
@@ -135,7 +135,7 @@ Material:
     - _ShowFront: 1
     - _ShowGlobalGradientSettings: 0
     - _ShowLMap: 0
-    - _ShowLeft: 0
+    - _ShowLeft: 1
     - _ShowRight: 1
     - _ShowTexture: 0
     - _ShowTop: 1
@@ -148,21 +148,21 @@ Material:
     m_Colors:
     - _AOColor: {r: 1, g: 1, b: 1, a: 1}
     - _AmbientColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1_B: {r: 0.054901965, g: 0.18431373, b: 0.2627451, a: 1}
+    - _Color: {r: 0.3231356, g: 0.33106783, b: 0.615, a: 1}
+    - _Color1_B: {r: 0.5429906, g: 0.73333335, b: 0.43137255, a: 1}
     - _Color1_D: {r: 0, g: 0, b: 0, a: 1}
-    - _Color1_F: {r: 0.20784315, g: 0.3647059, b: 0.5137255, a: 1}
+    - _Color1_F: {r: 0.45058778, g: 0.881, b: 0.35643506, a: 1}
     - _Color1_L: {r: 0.3216706, g: 0.6779075, b: 0.7294118, a: 1}
-    - _Color1_R: {r: 0.054901965, g: 0.18431373, b: 0.2627451, a: 1}
-    - _Color1_T: {r: 0.35686275, g: 0.68235296, b: 0.7294118, a: 1}
-    - _Color2_B: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_D: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_F: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_L: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_R: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2_T: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1_R: {r: 0.40042922, g: 0.538, b: 0.30707762, a: 1}
+    - _Color1_T: {r: 0.8111207, g: 0.8867924, b: 0.23843002, a: 1}
+    - _Color2_B: {r: 0.13675351, g: 0.185, b: 0.13525943, a: 1}
+    - _Color2_D: {r: 0, g: 0, b: 0, a: 1}
+    - _Color2_F: {r: 0.27462232, g: 0.5849056, b: 0.20692417, a: 1}
+    - _Color2_L: {r: 0.05, g: 0.05, b: 0.05, a: 1}
+    - _Color2_R: {r: 0.133875, g: 0.23799999, b: 0.16362497, a: 1}
+    - _Color2_T: {r: 0.6075791, g: 0.6603774, b: 0.43298328, a: 1}
     - _Color_Fog: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.054884292, g: 0.1170865, b: 0.19575398, a: 1}
     - _GizmoPosition_B: {r: 0, g: 0, b: 10, a: 10}
     - _GizmoPosition_D: {r: 0, g: 0, b: 10, a: 10}
     - _GizmoPosition_F: {r: 0, g: 0, b: 10, a: 10}

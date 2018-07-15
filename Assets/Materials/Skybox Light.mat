@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Skybox
+  m_Name: Skybox Light
   m_Shader: {fileID: 4800000, guid: 22bda8402ce8c6c4c8072d7e3b12886a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
