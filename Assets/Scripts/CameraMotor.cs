@@ -16,7 +16,7 @@ public class CameraMotor : MonoBehaviour
 
     private void Awake()
     {
-        EventDispatcher<RestartEvent>.OnEvent += OnStart;
+        Overlord.Progress.Changed += OnProgressChanged;
     }
 
     private void Start()
@@ -25,19 +25,20 @@ public class CameraMotor : MonoBehaviour
         StartPosition = MotorTransorm.localPosition;
     }
 
-    private void OnStart(RestartEvent obj)
+    private void OnProgressChanged(GameProgress obj)
     {
-        MotorTransorm.localPosition = StartPosition;
+        if (obj == GameProgress.Beginning)
+            MotorTransorm.localPosition = StartPosition;
     }
 
     void FixedUpdate ()
     {
-        if (Overlord.Processing)
+        if (Overlord.Progress.Value == GameProgress.Processing)
             MotorTransorm.localPosition += Direction * speed * Time.deltaTime;
     }
 
     private void OnDestroy()
     {
-        EventDispatcher<RestartEvent>.OnEvent -= OnStart;
+        Overlord.Progress.Changed -= OnProgressChanged;
     }
 }

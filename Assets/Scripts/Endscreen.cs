@@ -10,27 +10,32 @@ public class Endscreen : MonoBehaviour
 
     private void Start()
     {
-        EventDispatcher<RestartEvent>.OnEvent += OnStart;
-        EventDispatcher<FallEvent>.OnEvent += OnFall;
+        Overlord.Progress.Changed += OnProgressChanged;
         Overlord.Highscore.Changed += (c) => NewHighscoreText.SetActive(true);
         gameObject.SetActive(false);
     }
 
-    private void OnStart(RestartEvent obj)
+    private void OnProgressChanged(GameProgress obj)
     {
-        gameObject.SetActive(false);
-        NewHighscoreText.SetActive(false);
-    }
-
-    private void OnFall(FallEvent obj)
-    {
-        gameObject.SetActive(true);
+        switch (obj)
+        {
+            case GameProgress.Beginning:
+                gameObject.SetActive(false);
+                NewHighscoreText.SetActive(false);
+                break;
+            case GameProgress.Processing:
+                break;
+            case GameProgress.Over:
+                gameObject.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnDestroy()
     {
-        EventDispatcher<RestartEvent>.OnEvent -= OnStart;
-        EventDispatcher<FallEvent>.OnEvent -= OnFall;
+        Overlord.Progress.Changed -= OnProgressChanged;
     }
 }
 

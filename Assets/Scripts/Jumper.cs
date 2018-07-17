@@ -58,12 +58,18 @@ public class Jumper : MonoBehaviour
         StartRotation = CubeTransform.localRotation;
 
         Overlord.JumpPressed += StartJump;
-        EventDispatcher<RestartEvent>.OnEvent += OnStart;
+        Overlord.Progress.Changed += OnProgressChanged;
 
-        OnStart(new RestartEvent());
+        OnStart();
     }
 
-    private void OnStart(RestartEvent obj)
+    private void OnProgressChanged(GameProgress obj)
+    {
+        if (obj == GameProgress.Beginning)
+            OnStart();
+    }
+
+    private void OnStart()
     {
         StickyTransform = null;
 
@@ -76,7 +82,6 @@ public class Jumper : MonoBehaviour
             StickyTransform = hit.transform;
             StickyShift = CubeTransform.localPosition - StickyTransform.position;
         }
-        //Debug.Log(StickyTransform);
 
         JumpInProgress = false;
         JumpState = 0f;
@@ -87,7 +92,10 @@ public class Jumper : MonoBehaviour
     {
         if (!JumpInProgress && StablePosition)
         {
-            new JumpEvent().Broadcast();
+            if (Overlord.Progress.Value == GameProgress.Beginning)
+                Overlord.Progress.Value = GameProgress.Processing;
+
+            Overlord.JumpPerformed();
 
             JumpPoint = CubeTransform.localPosition;
             JumpInProgress = true;
@@ -158,18 +166,18 @@ public class Jumper : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Floor")
-            new FallEvent().Broadcast();
+            Overlord.Progress.Value = GameProgress.Over;
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "MainCamera")
-            new FallEvent().Broadcast();
+            Overlord.Progress.Value = GameProgress.Over;
     }
 
     private void OnDestroy()
     {
         Overlord.JumpPressed -= StartJump;
-        EventDispatcher<RestartEvent>.OnEvent -= OnStart;
+        Overlord.Progress.Changed -= OnProgressChanged;
     }
 }

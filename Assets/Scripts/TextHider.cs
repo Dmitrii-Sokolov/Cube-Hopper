@@ -19,19 +19,24 @@ public class TextHider : MonoBehaviour
     void Start ()
     {
         Alpha = new AnimatedFloat(1f, HideTime, Curve, (c) => Canvas.alpha = c);
-
-        EventDispatcher<RestartEvent>.OnEvent += OnStart;
-        EventDispatcher<FirstJumpEvent>.OnEvent += StartHide;
+        Overlord.Progress.Changed += OnProgressChanged;
     }
 
-    private void StartHide(FirstJumpEvent obj)
+    private void OnProgressChanged(GameProgress obj)
     {
-        Alpha.TargetValue = 0f;
-    }
-
-    private void OnStart(RestartEvent obj)
-    {
-        Alpha.Value = 1f;
+        switch (obj)
+        {
+            case GameProgress.Beginning:
+                Alpha.Value = 1f;
+                break;
+            case GameProgress.Processing:
+                Alpha.TargetValue = 0f;
+                break;
+            case GameProgress.Over:
+                break;
+            default:
+                break;
+        }
     }
 
     private void Update()
@@ -41,7 +46,6 @@ public class TextHider : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventDispatcher<RestartEvent>.OnEvent -= OnStart;
-        EventDispatcher<FirstJumpEvent>.OnEvent -= StartHide;
+        Overlord.Progress.Changed -= OnProgressChanged;
     }
 }

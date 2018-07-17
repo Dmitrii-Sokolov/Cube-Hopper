@@ -38,20 +38,23 @@ public class PopUp : MonoBehaviour
     void Awake()
     {
         EventDispatcher<NextPlatformEvent>.OnEvent += OnNextPlatform;
-        EventDispatcher<RestartEvent>.OnEvent += OnStart;
+        Overlord.Progress.Changed += OnProgressChanged;
         PopUpTransform = transform as RectTransform;
     }
 
     private void Start()
     {
-        OnStart(new RestartEvent());
+        OnProgressChanged(GameProgress.Beginning);
     }
 
-    private void OnStart(RestartEvent obj)
+    private void OnProgressChanged(GameProgress obj)
     {
-        gameObject.SetActive(false);
-        FadeInProgress = false;
-        FadeState = 0f;
+        if (obj == GameProgress.Beginning)
+        {
+            gameObject.SetActive(false);
+            FadeInProgress = false;
+            FadeState = 0f;
+        }
     }
 
     private void OnNextPlatform(NextPlatformEvent obj)
@@ -79,6 +82,6 @@ public class PopUp : MonoBehaviour
     private void OnDestroy()
     {
         EventDispatcher<NextPlatformEvent>.OnEvent -= OnNextPlatform;
-        EventDispatcher<RestartEvent>.OnEvent -= OnStart;
+        Overlord.Progress.Changed -= OnProgressChanged;
     }
 }

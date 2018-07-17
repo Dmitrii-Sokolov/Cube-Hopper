@@ -24,15 +24,16 @@ public class GridController : MonoBehaviour
     private void Awake()
     {
         EventDispatcher<NextPlatformEvent>.OnEvent += CreateRow;
-        EventDispatcher<RestartEvent>.OnEvent += OnStart;
+        Overlord.Progress.Changed += OnProgressChanged;
+    }
+
+    private void OnProgressChanged(GameProgress obj)
+    {
+        if (obj == GameProgress.Beginning)
+            OnStart();
     }
 
     void Start ()
-    {
-        OnStart();
-    }
-
-    private void OnStart(RestartEvent obj)
     {
         OnStart();
     }
@@ -70,6 +71,6 @@ public class GridController : MonoBehaviour
     private void OnDestroy()
     {
         EventDispatcher<NextPlatformEvent>.OnEvent -= CreateRow;
-        EventDispatcher<RestartEvent>.OnEvent -= OnStart;
+        Overlord.Progress.Changed -= OnProgressChanged;
     }
 }

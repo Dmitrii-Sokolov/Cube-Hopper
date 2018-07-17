@@ -32,7 +32,7 @@ public class SoundManager : MonoBehaviour {
 
     void Awake ()
     {
-        EventDispatcher<JumpEvent>.OnEvent += OnJump;
+        Overlord.JumpPerformed += OnJump;
         EventDispatcher<NextPlatformEvent>.OnEvent += OnNextPlatform;
 
         ToggleSound(Overlord.Sound.Value);
@@ -45,7 +45,7 @@ public class SoundManager : MonoBehaviour {
         Music.mute = !isOn;
     }
 
-    private void OnJump(JumpEvent obj)
+    private void OnJump()
     {
         SFX.pitch = MinJumpPitch + UnityEngine.Random.value * (MaxJumpPitch - MinJumpPitch);
         SFX.PlayOneShot(Jump);
@@ -59,7 +59,7 @@ public class SoundManager : MonoBehaviour {
 
     private void OnDestroy()
     {
-        EventDispatcher<JumpEvent>.OnEvent -= OnJump;
+        Overlord.JumpPerformed -= OnJump;
         EventDispatcher<NextPlatformEvent>.OnEvent -= OnNextPlatform;
         Overlord.Sound.Changed -= ToggleSound;
     }
