@@ -118,7 +118,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 1
   m_HolographicPauseOnTrackingLoss: 0
@@ -603,7 +604,7 @@ PlayerSettings:
   metroCertificateSubject: DSapsan
   metroCertificateIssuer: DSapsan
   metroCertificateNotAfter: 00aa1d09273bd501
-  metroApplicationDescription: Cubehopper
+  metroApplicationDescription: Cube Hopper
   wsaImages:
     131172: Assets/Textures/Splashscreens/SplashScreen.scale-100.png
     131197: Assets/Textures/Splashscreens/SplashScreen.scale-125.png

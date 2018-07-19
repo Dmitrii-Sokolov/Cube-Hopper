@@ -12,6 +12,8 @@ public class Score : MonoBehaviour
     private void Start()
     {
         Overlord.Score.Changed += ScoreChanged;
+
+        ScoreChanged(Overlord.Score.Value);
     }
 
     private void ScoreChanged(int score)

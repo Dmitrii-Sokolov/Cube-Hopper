@@ -32,11 +32,12 @@ public class SoundManager : MonoBehaviour {
 
     void Start ()
     {
-        Overlord.JumpPerformed += OnJump;
         EventDispatcher<NextPlatformEvent>.OnEvent += OnNextPlatform;
 
-        ToggleSound(Overlord.Sound.Value);
+        Overlord.JumpPerformed += OnJump;
         Overlord.Sound.Changed += ToggleSound;
+
+        ToggleSound(Overlord.Sound.Value);
     }
 
     private void ToggleSound(bool isOn)

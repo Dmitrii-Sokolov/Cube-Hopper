@@ -15,7 +15,7 @@ public class PlatformPool : MonoBehaviour
 
     private static Stack<GameObject> Objects = new Stack<GameObject>();
 
-    private void Awake()
+    private void Start()
     {
         Root = transform;
         Instance = this;
