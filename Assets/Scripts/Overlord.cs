@@ -127,6 +127,12 @@ public class Overlord : MonoBehaviour
         Highscore.Value = Mathf.Max(Score.Value, Highscore.Value);
     }
 
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+            State.Value = GameState.Pause;
+    }
+
     private void OnNextPlatform(NextPlatformEvent ev)
     {
         Score.Value += ev.Score;
