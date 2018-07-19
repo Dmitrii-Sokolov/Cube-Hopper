@@ -21,7 +21,7 @@ public class Screenshoter : MonoBehaviour
 
     private Camera TargetCamera = null;
 
-    private void Awake()
+    private void Start()
     {
         TargetCamera = GetComponent<Camera>();
     }
