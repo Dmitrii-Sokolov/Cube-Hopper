@@ -50,3 +50,26 @@ public class ClampedActionProperty<T> : ActionProperty<T> where T : IComparable
         }
     }
 }
+
+public class RestrictedActionProperty<T> : ActionProperty<T>
+{
+    private T mMinValue;
+    private T mMaxValue;
+    public delegate bool Checking(T arg);
+    private event Checking ValueCheck;
+
+    public RestrictedActionProperty(Checking check)
+    {
+        ValueCheck = check;
+    }
+
+    public override T Value
+    {
+        get { return mValue; }
+        set
+        {
+            if (ValueCheck(value))
+                base.Value = value;
+        }
+    }
+}

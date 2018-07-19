@@ -27,17 +27,11 @@ public class Overlord : MonoBehaviour
     [SerializeField]
     private string SoundKey = "Sound";
 
-    [SerializeField]
-    private string[] PauseButtons;
-
-    [SerializeField]
-    private string[] JumpButtons;
-
     public static ActionProperty<int> Score = new ActionProperty<int>();
     public static ActionProperty<int> Highscore = new ActionProperty<int>();
     public static ActionProperty<bool> Sound = new ActionProperty<bool>();
     public static ActionProperty<GameProgress> Progress = new ActionProperty<GameProgress>();
-    public static ActionProperty<GameState> State = new ActionProperty<GameState>();
+    public static RestrictedActionProperty<GameState> State = new RestrictedActionProperty<GameState>(c => (c != GameState.Pause || Progress.Value != GameProgress.Over));
 
     public static Action JumpPressed;
     public static Action JumpPerformed;
@@ -60,16 +54,16 @@ public class Overlord : MonoBehaviour
     private void Update()
     {
         if (Input.GetButtonDown("Jump"))
-            if (Progress.Value == GameProgress.Over)
-                Restart();
-            else
-                Jump();
+            TapOnEmptySpace();
 
-        //if (Input.GetButtonDown("Pause"))
-        //    Pause();
+        if (Input.GetButtonDown("Pause"))
+            Overlord.State.Value = GameState.Pause;
 
-        //if (Input.GetButtonDown("Mute"))
-        //    Mute();
+        if (Input.GetButtonDown("Mute"))
+            Sound.Value = !Sound.Value;
+
+        if (Input.GetButtonDown("Exit"))
+            Overlord.State.Value = GameState.Exit;
     }
 
     private void OnStateChanged(GameState obj)
@@ -92,29 +86,40 @@ public class Overlord : MonoBehaviour
 
     private void OnProgressChanged(GameProgress obj)
     {
-        if (obj == GameProgress.Over)
-            Highscore.Value = Mathf.Max(Score.Value, Highscore.Value);
+        switch (obj)
+        {
+            case GameProgress.Beginning:
+                Score.Value = 0;
+                break;
+            case GameProgress.Processing:
+                break;
+            case GameProgress.Over:
+                Highscore.Value = Mathf.Max(Score.Value, Highscore.Value);
+                break;
+            default:
+                break;
+        }
     }
 
-    public void Pause(bool paused)
+    //Used for main UI raycaster
+    public void TapOnEmptySpace()
     {
-        Overlord.State.Value = paused ? GameState.Pause : GameState.Game;
-    }
-
-    //public void Pause()
-    //{
-    //    Overlord.State.Value = Overlord.State.Value == GameState.Pause ? GameState.Pause : GameState.Game;
-    //}
-
-    public void Restart()
-    {
-        Score.Value = 0;
-        Progress.Value = GameProgress.Beginning;
-    }
-
-    public void Jump()
-    {
-        JumpPressed();
+        switch (State.Value)
+        {
+            case GameState.Game:
+                if (Progress.Value == GameProgress.Over)
+                    Progress.Value = GameProgress.Beginning;
+                else
+                    JumpPressed();
+                break;
+            case GameState.Pause:
+                State.Value = GameState.Game;
+                break;
+            case GameState.Exit:
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnNextPlatform(NextPlatformEvent ev)
@@ -127,5 +132,5 @@ public class Overlord : MonoBehaviour
         EventDispatcher<NextPlatformEvent>.OnEvent -= OnNextPlatform;
         Overlord.Progress.Changed -= OnProgressChanged;
         Overlord.State.Changed -= OnStateChanged;
-        }
     }
+}
