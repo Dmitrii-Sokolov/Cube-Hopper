@@ -14,15 +14,12 @@ public class CameraMotor : MonoBehaviour
     private Transform MotorTransorm;
     private Vector3 StartPosition;
 
-    private void Awake()
-    {
-        Overlord.Progress.Changed += OnProgressChanged;
-    }
-
     private void Start()
     {
         MotorTransorm = transform;
         StartPosition = MotorTransorm.localPosition;
+
+        Overlord.Progress.Changed += OnProgressChanged;
     }
 
     private void OnProgressChanged(GameProgress obj)

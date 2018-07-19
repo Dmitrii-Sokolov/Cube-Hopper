@@ -21,8 +21,10 @@ public class GridController : MonoBehaviour
 
     private int RowIndexer;
 
-    private void Awake()
+    void Start ()
     {
+        OnStart();
+
         EventDispatcher<NextPlatformEvent>.OnEvent += CreateRow;
         Overlord.Progress.Changed += OnProgressChanged;
     }
@@ -31,11 +33,6 @@ public class GridController : MonoBehaviour
     {
         if (obj == GameProgress.Beginning)
             OnStart();
-    }
-
-    void Start ()
-    {
-        OnStart();
     }
 
     private void OnStart()

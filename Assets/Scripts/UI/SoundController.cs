@@ -15,6 +15,7 @@ public class SoundController : MonoBehaviour
     private void Start()
     {
         Overlord.Sound.Changed += OnSoundChanged;
+
         OnSoundChanged(Overlord.Sound.Value);
     }
 

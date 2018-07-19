@@ -9,7 +9,7 @@ public class Highscore : MonoBehaviour
     [SerializeField]
     private Text ScoreText;
 
-    private void Awake()
+    private void Start()
     {
         Overlord.Highscore.Changed += ScoreChanged;
     }

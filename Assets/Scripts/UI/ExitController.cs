@@ -26,6 +26,7 @@ public class ExitController : MonoBehaviour
 
     public void Quit()
     {
+        Overlord.SaveScore();
         Application.Quit();
     }
 

@@ -30,7 +30,7 @@ public class SoundManager : MonoBehaviour {
     [SerializeField]
     private HitAudioSettings[] HitSettings;
 
-    void Awake ()
+    void Start ()
     {
         Overlord.JumpPerformed += OnJump;
         EventDispatcher<NextPlatformEvent>.OnEvent += OnNextPlatform;

@@ -94,7 +94,7 @@ public class Overlord : MonoBehaviour
             case GameProgress.Processing:
                 break;
             case GameProgress.Over:
-                Highscore.Value = Mathf.Max(Score.Value, Highscore.Value);
+                SaveScore();
                 break;
             default:
                 break;
@@ -102,7 +102,7 @@ public class Overlord : MonoBehaviour
     }
 
     //Used for main UI raycaster
-    public void TapOnEmptySpace()
+    public static void TapOnEmptySpace()
     {
         switch (State.Value)
         {
@@ -120,6 +120,11 @@ public class Overlord : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public static void SaveScore()
+    {
+        Highscore.Value = Mathf.Max(Score.Value, Highscore.Value);
     }
 
     private void OnNextPlatform(NextPlatformEvent ev)

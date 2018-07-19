@@ -35,15 +35,12 @@ public class PopUp : MonoBehaviour
     private bool FadeInProgress;
     private Vector3 StartPosition;
 
-    void Awake()
+    void Start()
     {
         EventDispatcher<NextPlatformEvent>.OnEvent += OnNextPlatform;
         Overlord.Progress.Changed += OnProgressChanged;
         PopUpTransform = transform as RectTransform;
-    }
 
-    private void Start()
-    {
         OnProgressChanged(GameProgress.Beginning);
     }
 
