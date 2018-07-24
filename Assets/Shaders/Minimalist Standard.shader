@@ -123,7 +123,7 @@ shader "MinimalistFree_V2/Standard" {
 	}
 
 	SubShader{
-		Tags { "QUEUE"="Geometry" "RenderType"="Opaque" "LIGHTMODE"="ForwardBase"}
+		Tags { "QUEUE"="Geometry" "RenderType"="Opaque" "RenderPipeline" = "LightweightPipeline"}
 
 		Pass{
 			CGPROGRAM
