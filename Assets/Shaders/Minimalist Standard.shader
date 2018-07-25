@@ -264,5 +264,4 @@ shader "MinimalistFree_V2/Standard" {
 		}
 	}
 	FallBack "Standard"
-    CustomEditor "MinimalistStandardMatV2Free"
 }

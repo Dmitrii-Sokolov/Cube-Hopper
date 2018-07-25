@@ -37,8 +37,6 @@ public class Overlord : MonoBehaviour
     public static Action JumpPressed;
     public static Action JumpPerformed;
 
-    private Exception TextException = null;
-
     private void Awake()
     {
         EventDispatcher<NextPlatformEvent>.OnEvent += OnNextPlatform;
