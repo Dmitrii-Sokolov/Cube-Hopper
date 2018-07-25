@@ -27,9 +27,13 @@ public class CameraMotor : MonoBehaviour
     [SerializeField]
     private float MaxSpeed;
 
+    [SerializeField]
+    private float SpeedMultiplierPerPlatform;
+
     private Transform MotorTransorm;
     private Vector3 StartPosition;
     private float Speed;
+    private float SpeedMultiplier = 1f;
 
     private void Start()
     {
@@ -38,6 +42,13 @@ public class CameraMotor : MonoBehaviour
 
         Overlord.Progress.Changed += OnProgressChanged;
         Overlord.PlayerPosition.Changed += OnPlayerPositionChanged;
+
+        EventDispatcher<NextPlatformEvent>.OnEvent += OnNextPlatform;
+    }
+
+    private void OnNextPlatform(NextPlatformEvent obj)
+    {
+        SpeedMultiplier *= SpeedMultiplierPerPlatform;
     }
 
     private void OnPlayerPositionChanged(Vector3 obj)
@@ -55,13 +66,16 @@ public class CameraMotor : MonoBehaviour
     private void OnProgressChanged(GameProgress obj)
     {
         if (obj == GameProgress.Beginning)
+        {
             MotorTransorm.localPosition = StartPosition;
+            SpeedMultiplier = 1f;
+        }
     }
 
     void Update ()
     {
         if (Overlord.Progress.Value == GameProgress.Processing)
-            MotorTransorm.localPosition += Direction * Speed * Time.deltaTime;
+            MotorTransorm.localPosition += Direction * Speed * SpeedMultiplier * Time.deltaTime;
     }
 
     private void OnDestroy()

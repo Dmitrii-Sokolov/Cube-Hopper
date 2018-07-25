@@ -471,6 +471,7 @@ MonoBehaviour:
   AverageSpeed: 1.7
   AverageMaxThreshold: 0.6
   MaxSpeed: 6
+  SpeedMultiplierPerPlatform: 1.005
 --- !u!1 &286286946
 GameObject:
   m_ObjectHideFlags: 0
