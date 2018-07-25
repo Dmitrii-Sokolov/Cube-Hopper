@@ -464,13 +464,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16c56e409ba22cd40a18647dbb2dfd67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedText: {fileID: 0}
   MainCamera: {fileID: 282840813}
   Direction: {x: 0, y: 0, z: -1}
-  MinSpeed: 0.5
+  MinSpeed: 0.3
   MinAverageThreshold: 0.7
-  AverageSpeed: 2
-  AverageMaxThreshold: 0.5
+  AverageSpeed: 1.7
+  AverageMaxThreshold: 0.6
   MaxSpeed: 6
 --- !u!1 &286286946
 GameObject:
