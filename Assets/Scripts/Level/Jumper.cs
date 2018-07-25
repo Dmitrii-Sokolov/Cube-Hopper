@@ -32,6 +32,9 @@ public class Jumper : MonoBehaviour
     [SerializeField]
     private float ScoreMultiplayer = 100f;
 
+    [SerializeField]
+    private Transform PlayerCenter;
+
     private Vector3 JumpDirection;
     private float JumpRotation;
     private Transform CubeTransform;
@@ -129,6 +132,8 @@ public class Jumper : MonoBehaviour
                 CubeTransform.localRotation = StartRotation;
             }
         }
+
+        Overlord.PlayerPosition.Value = PlayerCenter.position;
     }
 
     private void CheckGround()

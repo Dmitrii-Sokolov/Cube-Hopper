@@ -27,6 +27,7 @@ public class Overlord : MonoBehaviour
     [SerializeField]
     private string SoundKey = "Sound";
 
+    public static ActionProperty<Vector3> PlayerPosition = new ActionProperty<Vector3>();
     public static ActionProperty<int> Score = new ActionProperty<int>();
     public static ActionProperty<int> Highscore = new ActionProperty<int>();
     public static ActionProperty<bool> Sound = new ActionProperty<bool>();
