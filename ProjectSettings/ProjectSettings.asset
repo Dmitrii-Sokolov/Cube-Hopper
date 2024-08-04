@@ -743,10 +743,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 3
-  cloudProjectId: 8175299d-2569-4fe0-99c1-81d6cb9c94f6
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
-  projectName: Cube Hopper
-  organizationId: dsapsan
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
